@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="myapp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
+</head>
+
+<body ng-controller="HelloController">
+    <div>
+        <div>
+            <select data-ng-attr-size="{{players.length + 1}}" ng-model="selected" ng-options="player.id as player.name for player in players">
+            </select>
+            <button ng-click="moveIt()">select</button>
+        </div>
+        <div>
+            <form>
+                <div>
+                    <label>
+                        <input name="radio" ng-model="radio" type="radio" value="teamOne">TeamOneSelector</label>
+                    <label ng-repeat="id in teamOne">{{id.name}} {{id.position}}</label>
+                </div>
+                <div>
+                    <label>
+                        <input name="radio" ng-model="radio" type="radio" value="teamTwo">TeamTwoSelector</label>
+                    <label ng-repeat="id in teamTwo">{{id.name}} {{id.position}}</label>
+                </div>
+                <div>
+                    <label>
+                        <input name="radio" ng-model="radio" type="radio" value="teamThree">TeamThreeSelector</label>
+                    <label ng-repeat="id in teamThree">{{id.name}} {{id.position}}</label>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="index.controller.js"></script>
+<script src="lodash.js"></script>
+</html>
