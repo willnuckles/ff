@@ -7,32 +7,51 @@
 
 <body ng-controller="HelloController">
     <div>
-        <div>
-            <select data-ng-attr-size="{{players.length + 1}}" ng-model="selected" ng-options="player.id as player.name for player in players">
+        <div style="float:left; width: 185px;">
+            <input ng-model="search" placeholder="Search" />
+            <label>QB</label>
+            <select size="10" ng-model="selected" ng-options="player.playerId as player.displayName for player in players | filter: {position : 'QB' } | filter: search" style="width: 175px;">
             </select>
-            <button ng-click="moveIt()">select</button>
+            <label>RB</label>
+            <select size="10" ng-model="selected" ng-options="player.playerId as player.displayName for player in players | filter: {position : 'RB' } | filter: search" style="width: 175px;">
+            </select>
+            <label>WR</label>
+            <select size="10" ng-model="selected" ng-options="player.playerId as player.displayName for player in players | filter: {position : 'WR' } | filter: search" style="width: 175px;">
+            </select>
+            <label>TE</label>
+            <select size="10" ng-model="selected" ng-options="player.playerId as player.displayName for player in players | filter: {position : 'TE' } | filter: search" style="width: 175px;">
+            </select>
+            <label>K</label>
+            <select size="10" ng-model="selected" ng-options="player.playerId as player.displayName for player in players | filter: {position : 'K' } | filter: search" style="width: 175px;">
+            </select>
+            <label>DEF</label>
+            <select size="10" ng-model="selected" ng-options="player.playerId as player.displayName for player in players | filter: {position : 'DEF' } | filter: search" style="width: 175px;">
+            </select>
         </div>
-        <div>
-            <form>
-                <div>
-                    <label>
-                        <input name="radio" ng-model="radio" type="radio" value="teamOne">TeamOneSelector</label>
-                    <label ng-repeat="id in teamOne">{{id.name}} {{id.position}}</label>
-                </div>
-                <div>
-                    <label>
-                        <input name="radio" ng-model="radio" type="radio" value="teamTwo">TeamTwoSelector</label>
-                    <label ng-repeat="id in teamTwo">{{id.name}} {{id.position}}</label>
-                </div>
-                <div>
-                    <label>
-                        <input name="radio" ng-model="radio" type="radio" value="teamThree">TeamThreeSelector</label>
-                    <label ng-repeat="id in teamThree">{{id.name}} {{id.position}}</label>
-                </div>
-            </form>
-        </div>
+        <button ng-click="moveIt()">select</button>
+    </div>
+    <div style="float:left;">
+        <form>
+            <div>
+                <label>
+                    <input name="radio" ng-model="radio" type="radio" value="teamOne">TeamOneSelector</label>
+                <label ng-repeat="id in teamOne">{{id.displayName}} {{id.position}}</label>
+            </div>
+            <div>
+                <label>
+                    <input name="radio" ng-model="radio" type="radio" value="teamTwo">TeamTwoSelector</label>
+                <label ng-repeat="id in teamTwo">{{id.displayName}} {{id.position}}</label>
+            </div>
+            <div>
+                <label>
+                    <input name="radio" ng-model="radio" type="radio" value="teamThree">TeamThreeSelector</label>
+                <label ng-repeat="id in teamThree">{{id.displayName}} {{id.position}}</label>
+            </div>
+        </form>
+    </div>
     </div>
 </body>
 <script src="index.controller.js"></script>
 <script src="lodash.js"></script>
+
 </html>
